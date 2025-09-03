@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import './../styles/App.css'; 
-import LoginForm from "./Loginform"; 
+import './../styles/App.css'; // CSS import
+import LoginForm from "./Loginform"; // Child component import
 
 const App = () => {
   // Parent state
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  // Callback to update state
+  // Callback to update login state
   const handleLogin = () => {
     setIsLoggedIn(true);
   };
@@ -15,8 +15,10 @@ const App = () => {
     <div>
       {/* Do not remove the main div */}
       <h1 style={{ textAlign: "center", marginTop: "50px" }}>Parent Component</h1>
+
       {isLoggedIn ? (
-        <h2 style={{ textAlign: "center" }}>You are logged in!</h2>
+        // Cypress expects <p> with exact text
+        <p style={{ textAlign: "center", marginTop: "20px" }}>You are logged in!</p>
       ) : (
         <LoginForm isLoggedIn={isLoggedIn} onLogin={handleLogin} />
       )}
